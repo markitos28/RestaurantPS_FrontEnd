@@ -1,0 +1,72 @@
+.Filtros-Mercaderia
+{
+    color:black;
+    font-family: 'Acme', sans-serif;
+    align-items: center;
+    background-color: rgba(255, 187, 0, 0.589);
+}
+
+
+
+
+#container-txt-find
+{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    
+}
+
+#container-txt-find > label
+{
+    width: 50%;
+    text-align: center;
+}
+
+#container-txt-find > input
+{
+    width: 50%;
+}
+
+#container-select-find
+{
+    color: black;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#container-select-find > label
+{
+    width: 50%;
+    text-align: center;
+}
+
+#container-select-find > select
+{
+    width: 50%;
+}
+
+
+#container-btn-find
+{
+    
+    color: black;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    
+}
+
+#btnFind
+{
+    width: 120px;
+}
+
+#inputNombre
+{
+    border-radius: 5px;
+    
+    font-size: 16px;
+    background-color: white;
+}

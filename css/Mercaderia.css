@@ -1,0 +1,114 @@
+.Container-Mercaderia
+{
+    color:black;
+    font-family: 'Permanent Marker', cursive;
+}
+
+.Card-Mercaderia
+{
+    border-style: solid;
+    border-color: black;
+    background-color: rgba(255, 243, 79, 0.5);
+    
+    border-radius: 15px;
+    text-align: center;
+    align-items: center;
+}
+
+#tipo-Mercaderia
+{
+    font-size: 24px;
+}
+
+
+#img-mercaderia
+{
+    width: 120px;
+    height: 120px;
+    border-radius: 10%;
+    box-shadow: 0px 0px 8px 3px black;
+}
+
+#conteiner-datos-mercaderia
+{
+    margin: 10px;
+}
+
+#nombre-mercaderia
+{
+    font-size: 18px;
+    margin:7px;
+}
+
+.container-descripcion-mercaderia
+{
+    display: grid;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 16px;
+}
+
+#ingredientes
+{
+    width: 100%;
+    height: 120px;
+}
+
+.container-descripcion-mercaderia>h3
+{
+    font-size: 18px;
+    font-family: 'Permanent Marker', cursive;
+}
+
+#price-Mercaderia
+{
+    font-size: 24px;
+    font-family: 'Permanent Marker', cursive;
+    color: black;
+}
+
+.icon
+{
+    height: 15px;
+    width: 15px;
+    color: black;
+    border-radius: 15%;
+    text-align: center;
+}
+
+.btn-action
+{
+    border-radius: 5px;
+    font-size: 14px;
+    font-family: 'Permanent Marker', cursive;
+    border-color: rgb(0, 0, 0);
+}
+
+.btn-operation
+{
+    margin:5px;
+}
+
+#btn-Agregar
+{
+    background-color: rgba(0, 150, 0, 0.466);
+}
+
+#btn-Quitar
+{
+    background-color: rgba(223, 1, 1, 0.63);
+}
+
+#btn-Info
+{
+    background-color: rgb(202, 202, 202);
+}
+
+.btn-action:hover
+{
+    box-shadow: 0px 0px 6px 3px rgba(0, 0, 0, 0.767) ;
+}
+
+.btn-action:active
+{
+    font-size: 12px;
+}

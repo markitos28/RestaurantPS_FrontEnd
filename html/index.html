@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Restaurante </title>
+    
+    <script defer type="module" src="../js/init/initheaderNav.js"></script>
+    <script defer type="module" src="../js/init/initPedido.js"></script>
+
+    <!-- Own Styles-->
+    <link rel="stylesheet" type="text/css" href="../css/principal.css">
+    <link rel="stylesheet" type="text/css" href="../css/Mercaderia.css">
+    <link rel="stylesheet" type="text/css" href="../css/FiltroMercaderia.css">
+    
+    <!-- Bootstrap Links-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+
+    <!-- Import Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Acme&family=Courgette&family=Indie+Flower&family=Lobster&family=Permanent+Marker&display=swap" rel="stylesheet">
+</head>
+
+<body>
+        <section class="row" id="header_redirect">
+            <!-- Header navigator -->
+            <!-- initheaderNav.js-->
+
+            <div class= "container-modal-carrito">
+                <!-- Modal Carrito -->
+            </div>
+        </section>
+
+        
+        <!-- ---------------  Mercaderia ------------------------->
+        <div class="row" id="box-leyenda-header">
+            <h1 class="col"> Nuestros Platos </h1>
+        </div>
+        
+        <!-- --------------- Filtros de Mercaderia --------------->
+        <div class="Filtros-Mercaderia">   
+            <div class="row"> 
+                <div class="col" id="container-txt-find"> 
+                    <label  for="Nombre" >Nombre Mercaderia  </label>
+                    <input type="text"  id="inputNombre">
+                </div>
+
+                <div class="col" id="container-select-find">
+                    <label  for="TipoMercaderia">Tipo Mercaderia</label>
+                    <select  name="TipoMercaderia" id="select-TipoMercaderia">
+                        <option value="-1" selected>Todas</option>
+                    </select>    
+                </div>
+                <div class="col" id="container-listbox-find">
+                    <label for="Ordenamiento"> Ordernar </label>
+                    <select name="Orden" id="listbox-orden">
+                        <option value="0" selected>Ascendente</option>
+                        <option value="1">Descendente</option>
+                    </select>
+                    
+                </div>
+                <div class="col" id="container-btn-find">
+                    <button id="btnFind" class="col-1"> Buscar</button>    
+                </div>
+            </div>
+        </div>
+
+        <div class="Container-Mercaderia">
+            <div class="row row-cols-4" id="container-row-mercaderia">
+                <!-- initPedido.js-->
+            </div>
+        </div>
+
+</body>
+
+<footer>
+
+</footer>
+</html>
+

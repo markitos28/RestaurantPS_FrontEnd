@@ -38,6 +38,20 @@ function getCart() {
 function clearCart() {
   //cart = [];
   localStorage.removeItem('cart');
+  console.log(getCart());
 }
 
-export {addToCart, removeFromCart, getCart,clearCart};
+function addToDelivery(product) {
+  localStorage.setItem('delivery', JSON.stringify(product));
+}
+
+function removeFromDelivery() {
+  localStorage.removeItem('delivery');
+}
+
+function getDelivery() {
+  var delivery = JSON.parse(localStorage.getItem('delivery')) ;
+  return delivery;
+}
+
+export {addToCart, removeFromCart, getCart,clearCart, addToDelivery, removeFromDelivery, getDelivery};

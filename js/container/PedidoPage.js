@@ -1,7 +1,17 @@
 import {CardMercaderia} from "../components/cardMercaderia.js"
 import {OptionFiltrosMercaderia} from "../components/filtroSelectMercaderia.js"
+import {postComanda} from "../services/fetchComanda.js";
 
-
+const InsertComanda = async (listaMercaderia, formaEntrega) =>
+{
+    let request = 
+    {
+        "mercaderias": listaMercaderia, 
+        "formaEntrega": parseInt(formaEntrega)
+    };
+    let response = await postComanda(request);
+    return response;
+}
 
 const RenderCard=  (nombre, tipoDesc, precio, img, id) =>
 {
@@ -16,4 +26,4 @@ const RenderFiltroSelect=  (value,descripcion) =>
 };
 
 
-export {RenderCard, RenderFiltroSelect};
+export {RenderCard, RenderFiltroSelect, InsertComanda};

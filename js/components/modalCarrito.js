@@ -23,7 +23,6 @@ const modalCarrito = () => {
 
                             <tbody id="tbody-table-Mercaderia">
                             </tbody>
-
                             <tfoot id="tfoot-table-Mercaderia">
                             </tfoot>
                             </table>
@@ -31,8 +30,9 @@ const modalCarrito = () => {
                         <!-- modalCarrito.js (filaModalCarrito()) -->
                     </div>
                     <div class="modal-footer">
-                        <button class="btn btn-danger" data-bs-dismiss="modal">cerrar</button>
-                        <button class="btn btn-outline-success" data-bs-dismiss="modal">Comprar</button>
+                        <button class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-secondary" id="Vaciar-Carrito">Vaciar Carrito</button>
+                        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#myModalCompra" id="Finalizar-Compra">Comprar</button>
                     </div>
                 </div>
             </div>
@@ -49,12 +49,6 @@ const filaModalCarrito = (nombreMercaderia , precio, sumPrecioMercaderia, cantid
             <td id="Col-Table-Cantidad-${id}"> ${cantidad} </td>
             <td id="Col-Table-Precio-${id}">$ ${precio}</td>
             <td id="Col-Table-TotalUnidad-${id}">$ ${sumPrecioMercaderia}</td>
-            <td><button class="btn-action" id="btn-Agregar" value="${id}">
-                <img class="icon" id="icon-plus" src="../img/icons/plus-solid.svg" width="10px" height="10px"></img>
-            </button></td>
-            <td><button class="btn-action" id="btn-Quitar" value="${id}">
-                <img class="icon" id="icon-negative" src="../img/icons/minus-solid.svg" width="10px" height="10px"></img>
-            </button></td>
         </tr>
     `;
 

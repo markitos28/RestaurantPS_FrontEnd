@@ -1,4 +1,4 @@
-const btnActionAgrRej = () =>
+/*const btnActionAgrRej = () =>
 {
     
     //document.addEventListener("DOMContentLoaded", function(e)
@@ -51,4 +51,4 @@ const btnActionAgrRej = () =>
 };
 
 
-export {btnActionAgrRej};
+export {btnActionAgrRej};*/

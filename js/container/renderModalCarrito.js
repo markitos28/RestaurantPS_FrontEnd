@@ -1,6 +1,7 @@
 import {filaModalCarrito, filaModalTotalCarrito} from "../components/modalCarrito.js";
-import {getCart} from "../helpers/managerLocalStorageCarrito.js";
-import {cargaDatosCarrito} from "../helpers/helpMercaderia.js"
+import {getCart, clearCart, addToDelivery, removeFromDelivery, getDelivery} from "../helpers/managerLocalStorageCarrito.js";
+import {cargaDatosCarrito} from "../helpers/helpMercaderia.js";
+import {InsertComanda} from "../container/PedidoPage.js";
 
 /**
  * 
@@ -80,5 +81,68 @@ const renderChangeMercaderiaRowModal = (id, cantidad, precioUnitario) =>
     }
 
 }
+const listenerBtnVaciarCarrito= () =>
+{
+    const btnVaciarCarrito = document.querySelector("#Vaciar-Carrito");
+    btnVaciarCarrito.addEventListener("click", function(e)
+    {
+        clearCart();
+        let tbody= document.querySelector("#tbody-table-Mercaderia");
+        tbody.innerHTML=  "";
+        let tfooter= document.querySelector("#tfoot-table-Mercaderia");
+        tfooter.innerHTML=  "";
+        console.log(tbody.children);
+    });
 
-export {renderChangeModalCarrito, renderChangeMercaderiaRowModal};
+}
+
+const listenerBtnConfirmaCompra = async () =>
+{
+    let confirmar = document.querySelector("#Confirmar-Compra");
+    let response;
+    
+    confirmar.addEventListener("click", async function(e)
+    {
+        let formaEntrega = getDelivery();
+        let carrito = getCart();
+        let listaMercaderia=[];
+        carrito.forEach(element =>
+        {
+            listaMercaderia.push(element.id);
+        });
+        console.log("Hola, soy tu option: " + formaEntrega);
+        response = await InsertComanda(listaMercaderia, formaEntrega);
+        clearCart();
+        let tbody= document.querySelector("#tbody-table-Mercaderia");
+        tbody.innerHTML=  "";
+        let tfooter= document.querySelector("#tfoot-table-Mercaderia");
+        tfooter.innerHTML=  "";
+        
+        console.log(response);
+        if(response)
+        {
+            alert(`Su pedido está siendo procesado.\nSe entregará mediante ${response.formaEntrega.descripcion}`);
+        }
+    });
+    return response;
+}
+
+const listenerCheckFormaEntrega = async () =>
+{
+    let groupButton = document.querySelectorAll(".chk-tipo-entrega");
+    groupButton.forEach(element =>
+    {
+        if(element.checked)
+        {
+            removeFromDelivery();
+            addToDelivery(element.value);
+        }
+        element.addEventListener("change", function(e)
+        {
+            removeFromDelivery();
+            addToDelivery(element.value);
+        })
+    });
+}
+
+export {renderChangeModalCarrito, renderChangeMercaderiaRowModal, listenerBtnVaciarCarrito, listenerBtnConfirmaCompra, listenerCheckFormaEntrega};

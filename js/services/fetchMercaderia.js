@@ -29,7 +29,11 @@ export const PostMercaderia = async (data) =>
     let result;
     let response = await fetch(`${urlBase}/${controller}`, {
         method: "POST",
-        body: data
+        headers:{
+            "accept": "*/*",
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
     });
 
     if(response.ok && response.status==201)
@@ -69,7 +73,11 @@ export const PutMercaderiaId = async (idMercaderia, data) =>
     let result;
     let response = await fetch(`${urlBase}/${controller}/${idMercaderia}`, {
         method: "PUT",
-        body: data
+        headers:{
+            "accept": "*/*",
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
     });
 
     if(response.ok && response.status==200)

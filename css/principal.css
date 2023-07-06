@@ -116,4 +116,72 @@ body
     height: 30px;
 }
 
+/* ------------  CSS Tables ---------------------- */
+
+.table-modal-Mercaderia
+{
+    padding: 5px;
+    align-items: center;
+    text-align: center;
+    font-family: 'Acme', sans-serif;
+}
+
+.modal-footer{
+    font-family: 'Acme', sans-serif;
+}
+
+thead
+{
+    background-color: rgba(12, 100, 0, 0.493);
+}
+tbody
+{
+    
+    background-color: rgba(148, 255, 157, 0.493);
+    
+}
+
+tfoot
+{
+    background-color: rgba(150, 138, 255, 0.418);
+}
+
+
+#modal-body-Fin-Compra
+{
+    font-family: 'Acme', sans-serif;
+}
+#label-PedidoYa
+{
+    background-color: rgba(255, 0, 0, 0.774);
+    
+}
+#label-Salon
+{
+    background-color: rgba(38, 121, 0, 0.514);
+    
+}
+
+#label-Delibery
+{
+    background-color: rgba(0, 2, 121, 0.514);
+    
+}
+
+#label-PedidoYa:hover
+{
+    box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.767) ;
+    
+}
+#label-Salon:hover
+{
+    box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.767) ;
+    
+}
+
+#label-Delibery:hover
+{
+    box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.767) ;
+    
+}
 

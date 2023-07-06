@@ -6,6 +6,10 @@ export const getComanda = async () =>
     let result;
     let response = await fetch(`${urlBase}/${controller}`, {
         method: "GET",
+        headers:{
+            "accept": "*/*",
+            "Content-Type": "application/json"
+        },
     });
 
     if(response.ok && response.status==200)
@@ -23,11 +27,15 @@ export const getComanda = async () =>
 export const postComanda = async (data) =>
 {
     let result;
+    console.log(data);
     let response = await fetch(`${urlBase}/${controller}`, {
         method: "POST",
-        body: data
+        headers:{
+            "accept": "*/*",
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
     });
-
     if(response.ok && response.status==201)
     {
         result = response.json();
@@ -45,6 +53,9 @@ export const getComandaId = async (idComanda) =>
     let result;
     let response = await fetch(`${urlBase}/${controller}/${idComanda}`, {
         method: "GET",
+        headers:{
+            "Content-Type": "application/json"
+        },
     });
 
     if(response.ok && response.status==200)

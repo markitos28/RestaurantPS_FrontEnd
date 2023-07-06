@@ -2,8 +2,8 @@ import { GetMercaderia } from "../services/fetchMercaderia.js";
 import {RenderCard, RenderFiltroSelect} from "../container/PedidoPage.js";
 import { modalCarrito, filaModalCarrito, carritoVacio, filaModalTotalCarrito} from "../components/modalCarrito.js";
 import {addToCart, removeFromCart, getCart,clearCart} from "../helpers/managerLocalStorageCarrito.js";
-import {showCarrito} from "../init/initheaderNav.js";
-import {renderChangeModalCarrito, renderChangeMercaderiaRowModal} from "../container/renderModalCarrito.js"
+import {listenerCarrito} from "../init/initheaderNav.js";
+import {renderChangeMercaderiaRowModal} from "../container/renderModalCarrito.js"
 
 /* Devuelve una lista con los filtros de TipoMercaderia y sus ID's */
 const GetListTipoMercaderia= (mercaderiasJson) =>
@@ -77,6 +77,7 @@ async function eventListenerButtonsCarrito(mercaderiaJson)
                         let request= {"id": x.id, "nombre": `${x.nombre}`, "precio":x.precio};
                         addToCart(request);
                         renderChangeMercaderiaRowModal(x.id, 1, x.precio);
+                        console.log(getCart());
                     }
                 });
             });
@@ -92,6 +93,7 @@ async function eventListenerButtonsCarrito(mercaderiaJson)
                     {
                         removeFromCart(x.id);
                         renderChangeMercaderiaRowModal(x.id,-1, - x.precio);
+                        console.log(getCart());
                     }
                 });
             });
@@ -133,11 +135,13 @@ async function inicio()
         {
             let mercaderiaFiltrada= await GetMercaderia( null,null, orden);
             RenderMercaderia(mercaderiaFiltrada, container_mercaderia);
+            eventListenerButtonsCarrito(mercaderiaFiltrada);
         }
         else
         {
             let mercaderiaFiltrada= await GetMercaderia( tipoMercaderia.value,null, orden);
             RenderMercaderia(mercaderiaFiltrada, container_mercaderia);
+            eventListenerButtonsCarrito(mercaderiaFiltrada);
         }
     });
 
@@ -151,11 +155,13 @@ async function inicio()
         {
             let mercaderiaFiltrada= await GetMercaderia( tipoMercaderia,nombre, "ASC");
             RenderMercaderia(mercaderiaFiltrada, container_mercaderia);
+            eventListenerButtonsCarrito(mercaderiaFiltrada);
         }
         else
         {
             let mercaderiaFiltrada= await GetMercaderia( tipoMercaderia,nombre, "DESC");
             RenderMercaderia(mercaderiaFiltrada, container_mercaderia);
+            eventListenerButtonsCarrito(mercaderiaFiltrada);
         }
     });
 
@@ -168,11 +174,13 @@ async function inicio()
         {
             mercaderiaFiltrada= await GetMercaderia( null, nombreMercaderia.value);
             RenderMercaderia(mercaderiaFiltrada, container_mercaderia);
+            eventListenerButtonsCarrito(mercaderiaFiltrada);
         }
         else
         {
             mercaderiaFiltrada= await GetMercaderia( tipoMercaderia.value, nombreMercaderia.value);
             RenderMercaderia(mercaderiaFiltrada, container_mercaderia);
+            eventListenerButtonsCarrito(mercaderiaFiltrada);
         }
     });
     
@@ -182,7 +190,6 @@ async function inicio()
 
 
 await inicio();
-
 
 
 

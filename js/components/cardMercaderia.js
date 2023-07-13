@@ -1,4 +1,4 @@
-export const CardMercaderia = (nombre, tipoDesc, precio, img, id) =>
+export const CardMercaderia = (nombre, tipoDesc, precio, img, id, ingredientes) =>
 {
     const response = 
     `
@@ -22,6 +22,12 @@ export const CardMercaderia = (nombre, tipoDesc, precio, img, id) =>
             <button class="btn-action" id="btn-Info" value="${id}"> 
                 <img class= "icon" id= "icon-info" src="../img/icons/circle-info-solid.svg"></img> Info 
             </button>
+
+                <div id="miPopover-info-${id}" class="div-popover">
+                    <div class="popover-content">
+                        Ingredientes: ${ingredientes}
+                    </div>
+                </div>
             </div>
         </div>
 

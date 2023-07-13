@@ -61,7 +61,6 @@ const renderChangeMercaderiaRowModal = (id, cantidad, precioUnitario) =>
         if(!tagRowModal)
         {
             let jsonCarrito = getCart();
-            console.log(jsonCarrito);
             let listaAgrupMercaderia = cargaDatosCarrito(jsonCarrito);
 
             let total=0;
@@ -91,7 +90,6 @@ const listenerBtnVaciarCarrito= () =>
         tbody.innerHTML=  "";
         let tfooter= document.querySelector("#tfoot-table-Mercaderia");
         tfooter.innerHTML=  "";
-        console.log(tbody.children);
     });
 
 }
@@ -110,7 +108,6 @@ const listenerBtnConfirmaCompra = async () =>
         {
             listaMercaderia.push(element.id);
         });
-        console.log("Hola, soy tu option: " + formaEntrega);
         response = await InsertComanda(listaMercaderia, formaEntrega);
         clearCart();
         let tbody= document.querySelector("#tbody-table-Mercaderia");
@@ -118,7 +115,6 @@ const listenerBtnConfirmaCompra = async () =>
         let tfooter= document.querySelector("#tfoot-table-Mercaderia");
         tfooter.innerHTML=  "";
         
-        console.log(response);
         if(response)
         {
             alert(`Su pedido está siendo procesado.\nSe entregará mediante ${response.formaEntrega.descripcion}`);

@@ -109,7 +109,6 @@ const confirm = async ()=>
         {
             listaMercaderia.push(element.id);
         });
-        console.log("Hola, soy tu option: " + option);
         let response = await listenerBtnConfirmaCompra(listaMercaderia, option);
 
         if(response)

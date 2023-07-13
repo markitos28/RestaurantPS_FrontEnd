@@ -95,7 +95,8 @@ export const PutMercaderiaId = async (idMercaderia, data) =>
 export const GetMercaderiaId = async (idMercaderia) =>
 {
     let result;
-    let response = await fetch(`${urlBase}/${controller}/${idMercaderia}`, {
+    let url= `${urlBase}/${controller}/${idMercaderia}`;
+    let response = await fetch(url, {
         method: "GET",
     });
 

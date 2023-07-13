@@ -5,7 +5,6 @@
 function addToCart(product) {
   let cart = JSON.parse(localStorage.getItem('cart')) || [];
   cart.push(product);
-  console.log(cart);
   localStorage.setItem('cart', JSON.stringify(cart));
 }
 
@@ -13,7 +12,6 @@ function addToCart(product) {
 function removeFromCart(productId) {
   let cart = JSON.parse(localStorage.getItem('cart')) || [];
   let productIndex;
-  console.log(cart);
   cart.forEach((mercaderia, index) => {
     if(mercaderia.id == productId)
     {
@@ -38,7 +36,6 @@ function getCart() {
 function clearCart() {
   //cart = [];
   localStorage.removeItem('cart');
-  console.log(getCart());
 }
 
 function addToDelivery(product) {

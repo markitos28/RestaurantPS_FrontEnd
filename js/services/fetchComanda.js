@@ -1,10 +1,12 @@
 let urlBase= "https://localhost:7130";
 let controller= "api/v1/Comanda";
 
-export const getComanda = async () =>
+export const getComanda = async (fecha) =>
 {
+    let queryParam = fecha != null ?  `fecha=${fecha}` : null;
     let result;
-    let response = await fetch(`${urlBase}/${controller}`, {
+    let url=`${urlBase}/${controller}?${queryParam}`;
+    let response = await fetch(url, {
         method: "GET",
         headers:{
             "accept": "*/*",
@@ -27,7 +29,6 @@ export const getComanda = async () =>
 export const postComanda = async (data) =>
 {
     let result;
-    console.log(data);
     let response = await fetch(`${urlBase}/${controller}`, {
         method: "POST",
         headers:{

@@ -1,5 +1,5 @@
 import { GetMercaderia } from "../services/fetchMercaderia.js";
-import {RenderCard, RenderFiltroSelect} from "../container/PedidoPage.js";
+import {RenderCard, RenderFiltroSelect, GetMercaderiaById} from "../container/PedidoPage.js";
 import { modalCarrito, filaModalCarrito, carritoVacio, filaModalTotalCarrito} from "../components/modalCarrito.js";
 import {addToCart, removeFromCart, getCart,clearCart} from "../helpers/managerLocalStorageCarrito.js";
 import {listenerCarrito} from "../init/initheaderNav.js";
@@ -30,19 +30,22 @@ const GetListTipoMercaderia= (mercaderiasJson) =>
 };
 
 /* Renderiza las Card's que muestran la mercaderia para vender */
-const RenderMercaderia = (mercaderiasJson, container) =>
+const RenderMercaderia =  (mercaderiasJson, container) =>
 {
     let agregadoHtmlMercaderia= ``;
     /* Renderiza las tarjetas de mercaderia */
-    mercaderiasJson.forEach(element => 
+    mercaderiasJson.forEach(async element => 
         {
             let nombre = element.nombre;
             let tipoDesc = element.tipo.descripcion;
             let precio= element.precio;
             let img= element.imagen;
             let id= element.id;
+            let ingredientes= "";
             
-            agregadoHtmlMercaderia += RenderCard(nombre, tipoDesc, precio, img, id);
+            let response= RenderCard(nombre, tipoDesc, precio, img, id, ingredientes);
+            agregadoHtmlMercaderia += response ;
+            
             
         });
         container.innerHTML=agregadoHtmlMercaderia;
@@ -77,7 +80,6 @@ async function eventListenerButtonsCarrito(mercaderiaJson)
                         let request= {"id": x.id, "nombre": `${x.nombre}`, "precio":x.precio};
                         addToCart(request);
                         renderChangeMercaderiaRowModal(x.id, 1, x.precio);
-                        console.log(getCart());
                     }
                 });
             });
@@ -85,6 +87,7 @@ async function eventListenerButtonsCarrito(mercaderiaJson)
 
     btn_quitar_all.forEach(event =>
         {
+            
             event.addEventListener("click", function(e)
             {
                 mercaderiaJson.forEach(x => 
@@ -93,17 +96,32 @@ async function eventListenerButtonsCarrito(mercaderiaJson)
                     {
                         removeFromCart(x.id);
                         renderChangeMercaderiaRowModal(x.id,-1, - x.precio);
-                        console.log(getCart());
                     }
                 });
             });
         });
 
-    btn_info_all.forEach(event =>
+    btn_info_all.forEach( event =>
         {
-            event.addEventListener("click", function(e)
+            
+            event.addEventListener("click", async function(e)
             {
-                alert("El id es: " + event.value);
+                
+                let id = event.value;
+                let mercaderia = await GetMercaderiaById(id);
+                let miPopover = document.querySelector(`#miPopover-info-${id}`);
+
+                miPopover.querySelector(".popover-content").textContent ="Ingredientes: "+ `${mercaderia.ingredientes}`+ "\n" + "Preparacion: " + `${mercaderia.preparacion}`;
+
+                // Verificar si el popover está visible o no
+                let popoverVisible = miPopover.style.display !== "none";
+
+                // Mostrar o ocultar el popover según su estado actual
+                if (popoverVisible) {
+                    miPopover.style.display = "none";
+                } else {
+                    miPopover.style.display = "block";
+                }
             });
         });
 }
